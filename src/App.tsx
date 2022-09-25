@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Accordion from "./components/Accordion/Accordion";
+import Rating from "./components/Stars/Rating";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Accordion title={"Tittle 1"} collapsed={false}/>
+      <Accordion title={"Tittle 2"} collapsed={true}/>
+      <Greeting title={"Hello, React!"} />
+      <Rating value={0} />
+      <Rating value={1} />
+      <Rating value={2} />
+      <Rating value={3} />
+      <Rating value={4} />
+      <Rating value={5} />
+      <Greeting title={"Hello, Nastyusha!"} />
     </div>
   );
+}
+
+type GreetingPropsType = {
+  title: string;
+};
+
+function Greeting(props: GreetingPropsType) {
+  return <>{props.title}</>;
 }
 
 export default App;
