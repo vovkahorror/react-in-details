@@ -24,14 +24,7 @@ type StarPropsType = {
 };
 
 function Star(props: StarPropsType) {
-  if (props.selected) {
-    return (
-      <span>
-        <b>The best!</b>{" "}
-      </span>
-    );
-  }
-  return <span>The best! </span>;
+  return (props.selected) ? <span><b>The best!</b>{" "}</span> : <span>The best! </span>;
 }
 
 export default UncontrolledRating;
