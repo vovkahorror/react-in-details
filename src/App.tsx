@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
 import Accordion from "./components/Accordion/Accordion";
-import Rating from "./components/Stars/Rating";
+import Rating from "./components/Rating/Rating";
 import OnOff from "./components/OnOff/OnOff";
 import UncontrolledAccordion from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import UncontrolledRating from "./components/UncontrolledRating/UncontrolledRating";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
       <OnOff/>
       <UncontrolledAccordion title={"Tittle 1"}/>
       <UncontrolledAccordion title={"Tittle 2"}/>
+      <UncontrolledRating/>
+      <UncontrolledRating/>
     </div>
   );
 }
