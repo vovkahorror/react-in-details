@@ -5,25 +5,25 @@ import Rating, {RatingValueType} from "./components/Rating/Rating";
 import UncontrolledOnOff from "./components/UncontrolledOnOff/UncontrolledOnOff";
 import UncontrolledAccordion from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import UncontrolledRating from "./components/UncontrolledRating/UncontrolledRating";
+import OnOff from "./components/OnOff/OnOff";
 
 function App() {
     const [ratingValue, setRatingValue] = useState<RatingValueType>(0);
     const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
+    const [on, setOn] = useState(false);
 
     return (
         <div>
             <Greeting title={"Hello, Nastyusha!"}/>
-            <Accordion title={"Tittle 1"} collapsed={accordionCollapsed} onClick={setAccordionCollapsed}/>
             <Rating value={ratingValue} onClick={setRatingValue}/>
+            <Accordion title={"Tittle 1"} collapsed={accordionCollapsed} onClick={setAccordionCollapsed}/>
+            <OnOff on={on} setOn={setOn}/>
 
 
             <hr/>
-            <UncontrolledOnOff/>
-            <UncontrolledOnOff/>
+            <UncontrolledRating/>
             <UncontrolledAccordion title={"Tittle 1"}/>
-            <UncontrolledAccordion title={"Tittle 2"}/>
-            <UncontrolledRating/>
-            <UncontrolledRating/>
+            <UncontrolledOnOff/>
         </div>
     );
 }
