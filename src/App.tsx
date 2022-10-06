@@ -16,7 +16,10 @@ function App() {
         <div>
             <Greeting title={"Hello, Nastyusha!"}/>
             <Rating value={ratingValue} onClick={setRatingValue}/>
-            <Accordion title={"Tittle 1"} collapsed={accordionCollapsed} onClick={setAccordionCollapsed}/>
+            <Accordion title={"Tittle 1"}
+                       collapsed={accordionCollapsed}
+                       onClick={() => setAccordionCollapsed(!accordionCollapsed)}
+            />
             <OnOff on={on} setOn={setOn}/>
 
 
