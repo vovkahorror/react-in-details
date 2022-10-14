@@ -5,7 +5,7 @@ type OnOffPropsType = {
     setOn: (on: boolean) => void;
 }
 
-const OnOff: React.FC<OnOffPropsType> = ({on, setOn}) => {
+export const OnOff: React.FC<OnOffPropsType> = ({on, setOn}) => {
     const onStyle = {
         width: '30px',
         height: '20px',
@@ -34,11 +34,11 @@ const OnOff: React.FC<OnOffPropsType> = ({on, setOn}) => {
     };
 
     const onClicked = () => {
-        setOn(true)
-    }
+        setOn(true);
+    };
     const offClicked = () => {
-        setOn(false)
-    }
+        setOn(false);
+    };
 
     return (
         <div>

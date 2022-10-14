@@ -7,7 +7,7 @@ type RatingPropsType = {
     onClick: (value: RatingValueType) => void;
 };
 
-function Rating(props: RatingPropsType) {
+export function Rating(props: RatingPropsType) {
     return (
         <div>
             <Star selected={props.value > 0} value={1} onClick={props.onClick}/>

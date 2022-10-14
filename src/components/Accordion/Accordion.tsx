@@ -6,7 +6,7 @@ type AccordionPropsType = {
     onClick: () => void;
 };
 
-function Accordion(props: AccordionPropsType) {
+export function Accordion(props: AccordionPropsType) {
     return (
         <div>
             <AccordionTitle title={props.title} onClick={props.onClick}/>
@@ -21,7 +21,7 @@ type AccordionTitlePropsType = {
 };
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-    return <h3 onClick={props.onClick}>{props.title}</h3>;
+    return <h3 onClick={e => props.onClick()}>{props.title}</h3>;
 }
 
 function AccordionBody() {
