@@ -1,15 +1,19 @@
 import React from "react";
 
-type AccordionPropsType = {
+export type AccordionPropsType = {
     title: string;
     collapsed: boolean;
+    /**
+     * Callback that is called when title clicked
+     */
     onClick: () => void;
+    color?: string;
 };
 
 export function Accordion(props: AccordionPropsType) {
     return (
         <div>
-            <AccordionTitle title={props.title} onClick={props.onClick}/>
+            <AccordionTitle title={props.title} onClick={props.onClick} color={props.color}/>
             {!props.collapsed && <AccordionBody/>}
         </div>
     );
@@ -18,10 +22,16 @@ export function Accordion(props: AccordionPropsType) {
 type AccordionTitlePropsType = {
     title: string;
     onClick: () => void;
+    color?: string;
 };
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-    return <h3 onClick={e => props.onClick()}>{props.title}</h3>;
+    return (
+        <h3
+            style={{color: props.color ? props.color : 'black'}}
+            onClick={e => props.onClick()}>{props.title}
+        </h3>
+    );
 }
 
 function AccordionBody() {

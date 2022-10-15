@@ -1,22 +1,58 @@
 import React, {useState} from 'react';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {ComponentStory, ComponentMeta, Story} from '@storybook/react';
 import {action} from "@storybook/addon-actions";
-import {Accordion} from './Accordion';
+import {Accordion, AccordionPropsType} from './Accordion';
+
+const categoryObj = (categoryName: 'Main' | 'Event' | 'Color') => ({
+    table: {
+        category: categoryName,
+    },
+});
 
 export default {
-    title: 'Accordion',
+    title: 'components/Accordion',
     component: Accordion,
     argTypes: {
-        backgroundColor: {control: 'color'},
+        title: {
+            ...categoryObj('Main'),
+        },
+        onClick: {
+            ...categoryObj('Event'),
+        },
+        color: {
+            control: 'color',
+            ...categoryObj('Color'),
+        },
     },
 } as ComponentMeta<typeof Accordion>;
 
 const callback = action('accordion mode change event fired');
 
-export const CollapsedMode = () => <Accordion title={'Menu'} collapsed={true} onClick={callback}/>;
-export const UncollapsedMode = () => <Accordion title={'Menu'} collapsed={false} onClick={callback}/>;
-export const ChangeMode = () => {
+const Template: Story<AccordionPropsType> = (args) => <Accordion {...args}/>;
+
+const accordionProps = {
+    title: 'Menu',
+    onClick: callback,
+};
+
+export const CollapsedMode = Template.bind({});
+CollapsedMode.args = {
+    ...accordionProps,
+    collapsed: true,
+};
+
+export const UncollapsedMode = Template.bind({});
+UncollapsedMode.args = {
+    ...accordionProps,
+    collapsed: false,
+};
+
+export const ChangeMode: Story<AccordionPropsType> = (args) => {
     const [value, setValue] = useState<boolean>(true);
 
-    return <Accordion title={'Menu'} collapsed={value} onClick={() => setValue(!value)}/>;
+    return <Accordion {...args} collapsed={value} onClick={() => setValue(!value)}/>;
+};
+
+ChangeMode.args = {
+    title: 'Menu',
 };
