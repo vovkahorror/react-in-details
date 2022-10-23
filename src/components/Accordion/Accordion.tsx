@@ -1,20 +1,27 @@
 import React from "react";
 
+type ItemType = {
+    title: string;
+    value: any;
+}
+
 export type AccordionPropsType = {
     title: string;
     collapsed: boolean;
     /**
      * Callback that is called when title clicked
      */
-    onClick: () => void;
+    onChange: () => void;
     color?: string;
+    items: ItemType[];
+    onClick: (value: any) => void;
 };
 
 export function Accordion(props: AccordionPropsType) {
     return (
         <div>
-            <AccordionTitle title={props.title} onClick={props.onClick} color={props.color}/>
-            {!props.collapsed && <AccordionBody/>}
+            <AccordionTitle title={props.title} onClick={props.onChange} color={props.color}/>
+            {!props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
         </div>
     );
 }
@@ -34,14 +41,19 @@ function AccordionTitle(props: AccordionTitlePropsType) {
     );
 }
 
-function AccordionBody() {
+type AccordionBodyPropsType = {
+    items: ItemType[];
+    onClick: (value: any) => void;
+};
+
+function AccordionBody(props: AccordionBodyPropsType) {
+    const itemsList = props.items.map((item, index) => {
+        return <li onClick={() => props.onClick(item.value)} key={index}>{item.title}</li>;
+    });
+
     return (
         <ul>
-            <li>Hello</li>
-            <li>Hello</li>
-            <li>Hello</li>
-            <li>Hello</li>
-            <li>Hello</li>
+            {itemsList}
         </ul>
     );
 }

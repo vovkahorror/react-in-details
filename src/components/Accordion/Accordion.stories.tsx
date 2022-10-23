@@ -16,7 +16,7 @@ export default {
         title: {
             ...categoryObj('Main'),
         },
-        onClick: {
+        onChange: {
             ...categoryObj('Event'),
         },
         color: {
@@ -27,6 +27,7 @@ export default {
 } as ComponentMeta<typeof Accordion>;
 
 const callback = action('accordion mode change event fired');
+const onClickCallback = action('some item was clicked');
 
 const Template: Story<AccordionPropsType> = (args) => <Accordion {...args}/>;
 
@@ -45,12 +46,32 @@ export const UncollapsedMode = Template.bind({});
 UncollapsedMode.args = {
     ...accordionProps,
     collapsed: false,
+    items: [
+        {title: 'Nastya', value: 1},
+        {title: 'Vova', value: 2},
+        {title: 'Sasha', value: 3},
+        {title: 'Pavlik', value: 4},
+    ],
+    onClick() {
+        onClickCallback();
+    },
 };
 
 export const ChangeMode: Story<AccordionPropsType> = (args) => {
     const [value, setValue] = useState<boolean>(true);
 
-    return <Accordion {...args} collapsed={value} onClick={() => setValue(!value)}/>;
+    return <Accordion
+        {...args}
+        collapsed={value}
+        onChange={() => setValue(!value)}
+        items={[
+            {title: 'Nastya', value: 1},
+            {title: 'Vova', value: 2},
+            {title: 'Sasha', value: 3},
+            {title: 'Pavlik', value: 4},
+        ]}
+        onClick={onClickCallback}
+    />;
 };
 
 ChangeMode.args = {

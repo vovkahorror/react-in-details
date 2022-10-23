@@ -18,7 +18,9 @@ function App() {
             <Rating value={ratingValue} onClick={setRatingValue}/>
             <Accordion title={"Tittle 1"}
                        collapsed={accordionCollapsed}
-                       onClick={() => setAccordionCollapsed(!accordionCollapsed)}
+                       onChange={() => setAccordionCollapsed(!accordionCollapsed)}
+                       items={[]}
+                       onClick={(x) => x}
             />
             <OnOff on={on} setOn={setOn}/>
 
