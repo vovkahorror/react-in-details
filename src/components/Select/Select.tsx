@@ -4,9 +4,10 @@ import styles from './Select.module.css';
 type ItemType = {
     title: string;
     value: any;
+    population?: number;
 }
 
-type SelectPropsType = {
+export type SelectPropsType = {
     value?: any;
     onChange: (value: any) => void;
     items: ItemType[];
