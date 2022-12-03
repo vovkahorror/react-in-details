@@ -4,7 +4,7 @@ export default {
     title: 'useEffect demo',
 };
 
-export const Example1 = () => {
+export const SimpleExample = () => {
     const [fake, setFake] = useState(1);
     const [counter, setCounter] = useState(1);
 
@@ -26,6 +26,37 @@ export const Example1 = () => {
     return (
         <>
             Hello, {counter} {fake}
+            <button onClick={() => setFake(fake + 1)}>+</button>
+            <button onClick={() => setCounter(counter + 1)}>+</button>
+        </>
+    );
+};
+
+export const SetTimeoutExample = () => {
+    const [fake, setFake] = useState(1);
+    const [counter, setCounter] = useState(1);
+
+    useEffect(() => {
+        setInterval(() => {
+            setCounter(state => state + 1);
+        }, 1000);
+    }, []);
+
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const [seconds, setSeconds] = useState(date.getSeconds());
+
+    useEffect(() => {
+        setInterval(() => {
+            setSeconds(state => state < 59 ? state + 1 : 0);
+        }, 1000);
+    }, []);
+
+    return (
+        <>
+            Hello, counter: {counter} - fake: {fake}
+            <div>{hours}:{minutes}:{seconds}</div>
             <button onClick={() => setFake(fake + 1)}>+</button>
             <button onClick={() => setCounter(counter + 1)}>+</button>
         </>
